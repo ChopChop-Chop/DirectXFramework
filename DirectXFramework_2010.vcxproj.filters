@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns:atg="http://atg.xbox.com" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{8e114980-c1a3-4ada-ad7c-83caadf5daeb}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+    <Filter Include="DXUT">
+      <UniqueIdentifier>{a43c5c25-0e86-4a20-b64a-883785ff74fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="System">
+      <UniqueIdentifier>{3b3d6000-178b-47f8-8a9a-7cb12f9361fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Node">
+      <UniqueIdentifier>{cddeb58f-767c-479b-9c8d-21eba3099127}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DXUT\Optional\directx.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="WinMain.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionManager.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="Director.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectXFramework.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawManager.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectManager.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundManager.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureManager.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Node</Filter>
+    </ClCompile>
+    <ClCompile Include="Node.cpp">
+      <Filter>Node</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Node</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CollisionManager.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="Director.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawManager.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="Header.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectManager.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundManager.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureManager.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="Node.h">
+      <Filter>Node</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Node</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>Node</Filter>
+    </ClInclude>
+    <ClInclude Include="Define.h">
+      <Filter>System</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CLInclude Include="resource.h">
+      <Filter>Resource Files</Filter>
+    </CLInclude>
+    <ResourceCompile Include="DirectXFramework.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+</Project>
