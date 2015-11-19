@@ -3,9 +3,9 @@
 
 CDrawManager::CDrawManager()
 {
-	m_rtScreen.left = 100;
+	m_rtScreen.left = 0;
 	m_rtScreen.right = m_rtScreen.left + 1280;
-	m_rtScreen.top = 100;
+	m_rtScreen.top = 0;
 	m_rtScreen.bottom = m_rtScreen.top + 720;
 }
 
@@ -21,6 +21,9 @@ bool CDrawManager::Init()
 
 	if (!InitD3D())
 		return false;
+
+	ShowWindow(m_HWND, 5);
+	UpdateWindow(m_HWND);
 
 	return true;
 }
@@ -45,7 +48,7 @@ bool CDrawManager::InitWin()
 
 	// Create the application's window
 	m_HWND = CreateWindow("framework", "DirectXFrameworkAlpha",
-		WS_OVERLAPPEDWINDOW, m_rtScreen.left, m_rtScreen.top, m_rtScreen.right, m_rtScreen.bottom,
+		WS_OVERLAPPEDWINDOW, /*m_rtScreen.left*/100, /*m_rtScreen.top*/100, m_rtScreen.right, m_rtScreen.bottom,
 		NULL, NULL, wc.hInstance, NULL);
 
 	return true;
@@ -93,21 +96,13 @@ void CDrawManager::PreRender()
 void CDrawManager::Draw2D(LPDIRECT3DTEXTURE9 a_lpTexture, RECT a_rtSrc, D3DXVECTOR3 a_vCenter, D3DXVECTOR3 a_vPos, D3DCOLOR a_Color)
 {
 	m_pSprite->Begin(D3DXSPRITE_ALPHABLEND);
-	try{
-		if (a_lpTexture == NULL)
-		{
-			throw true;
-		}
-	}
-	catch (bool a_bIsTextureNullException)
+	
+	if (a_lpTexture == NULL)
 	{
-		if (a_bIsTextureNullException)
-		{
-			MessageBox(NULL, "Texture NULL", "TextureNullException", MB_OK);
-			std::cout << "Exception : TextureNullException - LPDIRECT3DTEXTURE9형 인자에 주소값이 Null입니다." << std::endl;
-		}
-	} 
-	m_pSprite->Draw(a_lpTexture, &a_rtSrc, &a_vCenter, &a_vPos, a_Color);
+		PostQuitMessage(0);
+		return;
+	}
+	m_pSprite->Draw(a_lpTexture, NULL, &a_vCenter, &a_vPos, a_Color);
 	
 	m_pSprite->End();
 }

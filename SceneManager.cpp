@@ -5,6 +5,8 @@
 
 CSceneManager::CSceneManager()
 {
+	m_pCurScene = nullptr;
+	m_pNextScene = nullptr;
 	m_bIsExistNextScene = false;
 }
 

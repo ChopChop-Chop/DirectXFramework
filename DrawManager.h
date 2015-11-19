@@ -10,7 +10,7 @@ public:
 	bool InitD3D();
 	//void SetMetrices();
 	void PreRender();
-	void CDrawManager::Draw2D(LPDIRECT3DTEXTURE9 a_lpTexture, RECT a_rtSrc, D3DXVECTOR3 a_vCenter, D3DXVECTOR3 a_vPos, D3DCOLOR a_Color);
+	void Draw2D(LPDIRECT3DTEXTURE9 a_lpTexture, RECT a_rtSrc, D3DXVECTOR3 a_vCenter, D3DXVECTOR3 a_vPos, D3DCOLOR a_Color);
 	void Draw3D();
 	void PostRender();
 	void Release();

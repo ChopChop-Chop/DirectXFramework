@@ -5,7 +5,7 @@
 CNode::CNode()
 {
 	m_sTag = new char(256);
-
+	
 }
 
 
@@ -31,6 +31,10 @@ void CNode::Release()
 		m_vChilds.at(i)->Release();
 	}
 }
+void CNode::setZorder(int Zorder)
+{
+	m_nZorder = Zorder;
+}
 
 void CNode::setTag(char* a_sTag)
 {
@@ -50,6 +54,7 @@ void CNode::addChild(CNode* a_Ref, int a_Zorder)
 		}
 	}
 
+	m_nZorder = a_Zorder;
 
 	m_vChilds.push_back(a_Ref);
 
@@ -75,6 +80,7 @@ int CNode::getZorder()
 {
 	return m_nZorder;
 }
+
 
 void CNode::removeChild(CNode* a_Ref)
 {
