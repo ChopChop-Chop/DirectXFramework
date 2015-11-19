@@ -26,11 +26,19 @@ public:
 	CSceneManager* getSceneManager() { return m_pSceneMgr; }
 	CSoundManager* getSoundManager() { return m_pSoundMgr; }
 	
-	static CDirector* getInstance();
+	static CDirector* getInstance()
+	{
+		static CDirector* Inst;
+		if (Inst == NULL)
+		{
+			Inst = new CDirector();
+		}
+
+		return Inst;
+	}
 
 	~CDirector();
 private:
-	static CDirector* Inst;
 
 	CCollisionManager* m_pCollisionMgr;
 	CDrawManager* m_pDrawMgr;

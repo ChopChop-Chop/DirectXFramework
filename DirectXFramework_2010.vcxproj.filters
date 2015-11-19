@@ -14,6 +14,9 @@
     <Filter Include="Node">
       <UniqueIdentifier>{cddeb58f-767c-479b-9c8d-21eba3099127}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{d47573cd-690b-4299-bcf5-d2b17a918117}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="DXUT\Optional\directx.ico">
@@ -28,9 +31,6 @@
       <Filter>System</Filter>
     </ClCompile>
     <ClCompile Include="Director.cpp">
-      <Filter>System</Filter>
-    </ClCompile>
-    <ClCompile Include="DirectXFramework.cpp">
       <Filter>System</Filter>
     </ClCompile>
     <ClCompile Include="DrawManager.cpp">
@@ -60,6 +60,9 @@
     <ClCompile Include="Scene.cpp">
       <Filter>Node</Filter>
     </ClCompile>
+    <ClCompile Include="S_Intro.cpp" />
+    <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="Mesh.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CollisionManager.h">
@@ -101,6 +104,9 @@
     <ClInclude Include="Define.h">
       <Filter>System</Filter>
     </ClInclude>
+    <ClInclude Include="S_Intro.h" />
+    <ClInclude Include="Sprite.h" />
+    <ClInclude Include="Mesh.h" />
   </ItemGroup>
   <ItemGroup>
     <CLInclude Include="resource.h">

@@ -4,6 +4,8 @@
 class CScene : public CNode
 {
 public:
+	virtual void Update() {}
+
 	CScene();
 	virtual ~CScene();
 };

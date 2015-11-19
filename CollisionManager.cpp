@@ -11,7 +11,7 @@ CCollisionManager::~CCollisionManager()
 {
 }
 
-bool CCollisionManager::PointToPoint(D3DXVECTOR3* a_vPt1, D3DXVECTOR3* a_vPt2, float fEpsilon = 0.0001)
+bool CCollisionManager::PointToPoint(D3DXVECTOR3* a_vPt1, D3DXVECTOR3* a_vPt2, float fEpsilon)
 {
 	if(fabsf(a_vPt2->x - a_vPt1->x) <= fEpsilon
 		&& fabsf(a_vPt2->y - a_vPt1->y <= fEpsilon)
@@ -21,37 +21,37 @@ bool CCollisionManager::PointToPoint(D3DXVECTOR3* a_vPt1, D3DXVECTOR3* a_vPt2, f
 	}
 	return false;
 }
-bool CCollisionManager::PointToLine(const D3DXVECTOR3* V, const D3DXVECTOR3* a_vPt1, const D3DXVECTOR3* a_vPt2, FLOAT fEpsilon = 0.0001)
+bool CCollisionManager::PointToLine(const D3DXVECTOR3* V, const D3DXVECTOR3* a_vPt1, const D3DXVECTOR3* a_vPt2, FLOAT fEpsilon)
 {
 	bool hr = false;
 
 	float fHsq;
-	D3DXVECTOR3 vcT = *V - *P1;
-	D3DXVECTOR3 vcL = *P2 - *P1;
+	D3DXVECTOR3 vcT = *V - *a_vPt1;
+	D3DXVECTOR3 vcL = *a_vPt2 - *a_vPt1;
 
 	D3DXVECTOR3 vcH;
 	D3DXVec3Cross(&vcH, &vcT, &vcL);
 	fHsq = D3DXVec3LengthSq(&vcH);
 
-	if (fHsq > Epsilon)
+	if (fHsq > fEpsilon)
 		return hr;
 
-	float L = fabsf(P2->x - P1->x) +
-		fabsf(P2->y - P1->y) +
-		fabsf(P2->z - P1->z);
-	float L1 = fabsf(V->x - P1->x) +
-		fabsf(V->y - P1->y) +
-		fabsf(V->z - P1->z);
-	float L2 = fabsf(V->x - P2->x) +
-		fabsf(V->y - P2->y) +
-		fabsf(V->z - P2->z);
+	float L = fabsf(a_vPt2->x - a_vPt1->x) +
+		fabsf(a_vPt2->y - a_vPt1->y) +
+		fabsf(a_vPt2->z - a_vPt1->z);
+	float L1 = fabsf(V->x - a_vPt1->x) +
+		fabsf(V->y - a_vPt1->y) +
+		fabsf(V->z - a_vPt1->z);
+	float L2 = fabsf(V->x - a_vPt2->x) +
+		fabsf(V->y - a_vPt2->y) +
+		fabsf(V->z - a_vPt2->z);
 
 	if ((L1 + L2) < (L + fEpsilon))
 		hr = true;
 
 	return hr;
 }
-bool CCollisionManager::PointToPlane(const D3DXVECTOR3* P, const D3DXVECTOR3* N, float D, float fEpsilon = 0.0001)
+bool CCollisionManager::PointToPlane(const D3DXVECTOR3* P, const D3DXVECTOR3* N, float D, float fEpsilon)
 {
 	bool hr = false;
 

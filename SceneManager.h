@@ -1,6 +1,6 @@
 #pragma once
+#include "Scene.h"
 
-class CScene;
 
 class CSceneManager
 {
@@ -11,6 +11,7 @@ private:
 	bool m_bIsExistNextScene;
 public:
 	void setNextScene(CScene* a_pNextScene);
+	void setCurScene(CScene* a_pCurScene);
 
 	CScene* getNextScene();
 	CScene* getCurScene();

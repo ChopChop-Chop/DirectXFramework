@@ -1,4 +1,5 @@
 #include "Director.h"
+#include "S_Intro.h"
 
 
 CDirector::CDirector()
@@ -31,15 +32,22 @@ bool CDirector::Init()
 	m_pTextureMgr = new CTextureManager();
 	m_pSceneMgr = new CSceneManager();
 	m_pSoundMgr = new CSoundManager();
+
+	m_pSceneMgr->setCurScene(new S_Intro);
+	m_pSceneMgr->getCurScene()->Init();
+
+	return true;
 }
 void CDirector::Update()
 {
+	m_pSceneMgr->sceneUpdate();
+	m_pSceneMgr->getCurScene()->Update();
 	// Scene Update();
 }
 void CDirector::Render()
 {
 	CDrawMgr->PreRender();
-	// Scene Render();
+	m_pSceneMgr->getCurScene()->Render();
 	CDrawMgr->PostRender();
 }
 void CDirector::Run()
@@ -107,13 +115,4 @@ LRESULT WINAPI MsgProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 	}
 
 	return DefWindowProc(hWnd, msg, wParam, lParam);
-}
-CDirector* CDirector::getInstance()
-{
-	if (Inst == NULL)
-	{
-		Inst = new CDirector();
-	}
-
-	return Inst;
 }

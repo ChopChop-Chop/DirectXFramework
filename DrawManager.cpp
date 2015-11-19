@@ -80,6 +80,8 @@ bool CDrawManager::InitD3D()
 	// Turn on ambient lighting 
 	m_pDevice->SetRenderState(D3DRS_AMBIENT, 0xffffffff);
 
+	D3DXCreateSprite(m_pDevice, &m_pSprite);
+
 	return true;
 }
 void CDrawManager::PreRender()

@@ -30,7 +30,7 @@ void CObjectManager::removeObjectByTag(char* a_sTag)
 {
 	for (auto p : m_vObjectPool)
 	{
-		if (p->getTag == a_sTag)
+		if (p->getTag() == a_sTag)
 		{
 			p->Release();
 			delete p;

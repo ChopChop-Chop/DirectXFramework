@@ -6,13 +6,13 @@ class CNode;
 class CObjectManager
 {
 public:
-	void addObject(CNode* a_Ref) throw (ObjectReferenceDuplicationException*);
-	void removeObjectByTag(char* a_sTag) throw (ObjectReferenceNullException*);
-	void removeObject(CNode* a_Ref) throw (ObjectReferenceNullException*);
+	void addObject(CNode* a_Ref);
+	void removeObjectByTag(char* a_sTag);
+	void removeObject(CNode* a_Ref);
 	void clearPool();
 
-	CNode* getObjectByTag(char* a_sTag) throw (ObjectReferenceDuplicationException*);
-	CNode* getObjectByIndex(int a_nIndex) throw (ObjectReferenceDuplicationException*);
+	CNode* getObjectByTag(char* a_sTag);
+	CNode* getObjectByIndex(int a_nIndex);
 
 	CObjectManager();
 	~CObjectManager();

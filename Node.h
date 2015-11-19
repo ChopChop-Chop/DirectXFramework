@@ -10,10 +10,12 @@ public:
 	virtual void Release();
 
 	void setTag(char* a_sTag);
-	void addChild(CNode* a_Ref);
+	void setZorder(int a_Zorder);
+	void addChild(CNode* a_Ref, int a_Zorder = 1);
 	void removeChild(CNode* a_Ref);
 	void removeChildByTag(char* a_sTag);
 	char* getTag();
+	int getZorder();
 
 	CNode();
 	virtual ~CNode();
@@ -21,5 +23,6 @@ protected:
 	std::vector<CNode*> m_vChilds;
 
 	char* m_sTag;
+	int m_nZorder;
 };
 

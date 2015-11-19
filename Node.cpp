@@ -2,7 +2,6 @@
 #include "Director.h"
 
 
-
 CNode::CNode()
 {
 	m_sTag = new char(256);
@@ -39,7 +38,7 @@ void CNode::setTag(char* a_sTag)
 
 }
 
-void CNode::addChild(CNode* a_Ref)
+void CNode::addChild(CNode* a_Ref, int a_Zorder)
 {
 	for(auto p : m_vChilds)
 	{
@@ -51,12 +50,30 @@ void CNode::addChild(CNode* a_Ref)
 		}
 	}
 
+
 	m_vChilds.push_back(a_Ref);
+
+	for (int i = 0; i < m_vChilds.size(); i++)
+	{
+		for (int j = 0; j < m_vChilds.size() - (i + 1); j++)
+		{
+			if (m_vChilds.at(j)->getZorder() > m_vChilds.at(j + 1)->getZorder())
+			{
+				auto temp = m_vChilds.at(j + 1);
+				m_vChilds.at(j + 1) = m_vChilds.at(j);
+				m_vChilds.at(j) = temp;
+			}
+		}
+	}
 }
 
 char* CNode::getTag()
 {
 	return m_sTag;
+}
+int CNode::getZorder()
+{
+	return m_nZorder;
 }
 
 void CNode::removeChild(CNode* a_Ref)
@@ -77,7 +94,7 @@ void CNode::removeChildByTag(char* a_sTag)
 {
 	for (auto p : m_vChilds)
 	{
-		if (p->getTag == a_sTag)
+		if (p->getTag() == a_sTag)
 		{
 			p->Release();
 			delete p;

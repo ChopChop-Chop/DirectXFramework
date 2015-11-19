@@ -1,7 +1,6 @@
 #include "SceneManager.h"
 #include "Node.h"
 #include "Director.h"
-#include "Scene.h"
 
 
 CSceneManager::CSceneManager()
@@ -32,6 +31,10 @@ void CSceneManager::setNextScene(CScene* a_pNextScene)
 	m_bIsExistNextScene = true;
 }
 
+void CSceneManager::setCurScene(CScene* a_pCurScene)
+{
+	m_pCurScene = a_pCurScene;
+}
 CScene* CSceneManager::getNextScene()
 {
 	if (m_pNextScene == NULL)
