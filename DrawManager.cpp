@@ -3,10 +3,10 @@
 
 CDrawManager::CDrawManager()
 {
-	m_rtScreen.left = 0;
-	m_rtScreen.right = m_rtScreen.left + 1280;
-	m_rtScreen.top = 0;
-	m_rtScreen.bottom = m_rtScreen.top + 720;
+	_rtScreen.left = 0;
+	_rtScreen.right = _rtScreen.left + 1280;
+	_rtScreen.top = 0;
+	_rtScreen.bottom = _rtScreen.top + 720;
 }
 
 
@@ -22,8 +22,8 @@ bool CDrawManager::Init()
 	if (!InitD3D())
 		return false;
 
-	ShowWindow(m_HWND, 5);
-	UpdateWindow(m_HWND);
+	ShowWindow(_hWND, 5);
+	UpdateWindow(_hWND);
 
 	return true;
 }
@@ -41,14 +41,14 @@ bool CDrawManager::InitWin()
 	int width = GetSystemMetrics(SM_CXFULLSCREEN);
 	int height = GetSystemMetrics(SM_CYFULLSCREEN);
 
-	m_rtScreen.left = (width / 2) - (WINWIDTH / 2);
-	m_rtScreen.right = (width / 2) + (WINWIDTH / 2);
-	m_rtScreen.top = (height / 2) - (WINHEIGHT / 2);
-	m_rtScreen.bottom = (height / 2) + (WINHEIGHT / 2);
+	_rtScreen.left = (width / 2) - (WINWIDTH / 2);
+	_rtScreen.right = (width / 2) + (WINWIDTH / 2);
+	_rtScreen.top = (height / 2) - (WINHEIGHT / 2);
+	_rtScreen.bottom = (height / 2) + (WINHEIGHT / 2);
 
 	// Create the application's window
-	m_HWND = CreateWindow("framework", "DirectXFrameworkAlpha",
-		WS_OVERLAPPEDWINDOW, /*m_rtScreen.left*/100, /*m_rtScreen.top*/100, m_rtScreen.right, m_rtScreen.bottom,
+	_hWND = CreateWindow("framework", "DirectXFramework",
+		WS_OVERLAPPEDWINDOW, /*m_rtScreen.left*/100, /*m_rtScreen.top*/100, _rtScreen.right, _rtScreen.bottom,
 		NULL, NULL, wc.hInstance, NULL);
 
 	return true;
@@ -56,7 +56,7 @@ bool CDrawManager::InitWin()
 bool CDrawManager::InitD3D()
 {
 	// Create the D3D object.
-	if (NULL == (m_pD3D = Direct3DCreate9(D3D_SDK_VERSION)))
+	if (NULL == (_D3D = Direct3DCreate9(D3D_SDK_VERSION)))
 		return false;
 
 	// Set up the structure used to create the D3DDevice. Since we are now
@@ -70,55 +70,56 @@ bool CDrawManager::InitD3D()
 	d3dpp.AutoDepthStencilFormat = D3DFMT_D16;
 
 	// Create the D3DDevice
-	if (FAILED(m_pD3D->CreateDevice(D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, m_HWND,
+	if (FAILED(_D3D->CreateDevice(D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, _hWND,
 		D3DCREATE_MIXED_VERTEXPROCESSING,
-		&d3dpp, &m_pDevice)))
+		&d3dpp, &_device)))
 	{
 		return false;
 	}
 
 	// Turn on the zbuffer
-	m_pDevice->SetRenderState(D3DRS_ZENABLE, TRUE);
+	_device->SetRenderState(D3DRS_ZENABLE, TRUE);
 
 	// Turn on ambient lighting 
-	m_pDevice->SetRenderState(D3DRS_AMBIENT, 0xffffffff);
+	_device->SetRenderState(D3DRS_AMBIENT, 0xffffffff);
 
-	D3DXCreateSprite(m_pDevice, &m_pSprite);
+	D3DXCreateSprite(_device, &_sprite);
 
 	return true;
 }
 void CDrawManager::PreRender()
 {
-	m_pDevice->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER,
+	_device->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER,
 		D3DCOLOR_XRGB(0, 0, 255), 1.0f, 0);
-	m_pDevice->BeginScene();
+	_device->BeginScene();
 }
 void CDrawManager::Draw2D(LPDIRECT3DTEXTURE9 a_lpTexture, RECT a_rtSrc, D3DXVECTOR3 a_vCenter, D3DXVECTOR3 a_vPos, D3DCOLOR a_Color)
 {
-	m_pSprite->Begin(D3DXSPRITE_ALPHABLEND);
+	_sprite->Begin(D3DXSPRITE_ALPHABLEND);
 	
 	if (a_lpTexture == NULL)
 	{
+		MessageBox(_hWND, "Texture Null", "Texture Null", MB_OK);
 		PostQuitMessage(0);
 		return;
 	}
-	m_pSprite->Draw(a_lpTexture, NULL, &a_vCenter, &a_vPos, a_Color);
+	_sprite->Draw(a_lpTexture, NULL, &a_vCenter, &a_vPos, a_Color);
 	
-	m_pSprite->End();
+	_sprite->End();
 }
 void CDrawManager::Draw3D()
 {
-
+	
 }
 void CDrawManager::PostRender()
 {
-	m_pDevice->EndScene();
-	m_pDevice->Present(0, 0, 0, 0);
+	_device->EndScene();
+	_device->Present(0, 0, 0, 0);
 }
 void CDrawManager::Release()
 {
-	SAFE_RELEASE(m_pMesh)
-	SAFE_RELEASE(m_pSprite);
-	SAFE_RELEASE(m_pDevice);
-	SAFE_RELEASE(m_pD3D);
+	SAFE_RELEASE(_mesh)
+	SAFE_RELEASE(_sprite);
+	SAFE_RELEASE(_device);
+	SAFE_RELEASE(_D3D);
 }

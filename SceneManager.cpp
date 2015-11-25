@@ -5,41 +5,41 @@
 
 CSceneManager::CSceneManager()
 {
-	m_pCurScene = nullptr;
-	m_pNextScene = nullptr;
-	m_bIsExistNextScene = false;
+	_curScene = nullptr;
+	_nextScene = nullptr;
+	_isExistNextScene = false;
 }
 
 
 CSceneManager::~CSceneManager()
 {
-	if (m_pCurScene != NULL)
+	if (_curScene != NULL)
 	{
-		delete m_pCurScene;
-		m_pCurScene = nullptr;
+		delete _curScene;
+		_curScene = nullptr;
 	}
-	if (m_pNextScene != NULL)
+	if (_nextScene != NULL)
 	{
-		delete m_pNextScene;
-		m_pNextScene = nullptr;
+		delete _nextScene;
+		_nextScene = nullptr;
 	}
 }
 
 
 void CSceneManager::setNextScene(CScene* a_pNextScene)
 {
-	this->m_pNextScene = a_pNextScene;
+	this->_nextScene = a_pNextScene;
 
-	m_bIsExistNextScene = true;
+	_isExistNextScene = true;
 }
 
 void CSceneManager::setCurScene(CScene* a_pCurScene)
 {
-	m_pCurScene = a_pCurScene;
+	_curScene = a_pCurScene;
 }
 CScene* CSceneManager::getNextScene()
 {
-	if (m_pNextScene == NULL)
+	if (_nextScene == NULL)
 	{
 		MessageBox(CDIRECTOR->getDrawManager()->getHWND(), "NextSceneNullException", "NextSceneNullException", MB_OK);
 		std::cout << "NextSceneNullException" << std::endl;
@@ -47,11 +47,11 @@ CScene* CSceneManager::getNextScene()
 		return NULL;
 	}
 
-	return m_pNextScene;
+	return _nextScene;
 }
 CScene* CSceneManager::getCurScene()
 {
-	if (m_pCurScene == NULL)
+	if (_curScene == NULL)
 	{
 		MessageBox(CDIRECTOR->getDrawManager()->getHWND(), "CurSceneNullException", "CurSceneNullException", MB_OK);
 		std::cout << "CurSceneNullException" << std::endl;
@@ -59,18 +59,18 @@ CScene* CSceneManager::getCurScene()
 		return NULL;
 	}
 
-	return m_pCurScene;
+	return _curScene;
 }
 void CSceneManager::sceneUpdate()
 {
-	if (!m_bIsExistNextScene)
+	if (!_isExistNextScene)
 		return;
 
-	m_pCurScene->Release();
-	delete m_pCurScene;
-	m_pCurScene = nullptr;
-	m_pCurScene = m_pNextScene;
-	m_pCurScene->Init();
+	_curScene->Release();
+	delete _curScene;
+	_curScene = nullptr;
+	_curScene = _nextScene;
+	_curScene->Init();
 
-	m_bIsExistNextScene = false;
+	_isExistNextScene = false;
 }

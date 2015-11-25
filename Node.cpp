@@ -4,7 +4,7 @@
 
 CNode::CNode()
 {
-	m_sTag = new char(256);
+	_tag = new char(256);
 	
 }
 
@@ -19,32 +19,32 @@ bool CNode::Init()
 }
 void CNode::Render()
 {
-	for (auto p : m_vChilds)
+	for (auto p : _childs)
 	{
 		p->Render();
 	}
 }
 void CNode::Release()
 {
-	for (int i = m_vChilds.size(); i > 0; i--)
+	for (int i = _childs.size(); i > 0; i--)
 	{
-		m_vChilds.at(i)->Release();
+		_childs.at(i)->Release();
 	}
 }
 void CNode::setZorder(int Zorder)
 {
-	m_nZorder = Zorder;
+	_zorder = Zorder;
 }
 
 void CNode::setTag(char* a_sTag)
 {
-	m_sTag = a_sTag;
+	_tag = a_sTag;
 
 }
 
 void CNode::addChild(CNode* a_Ref, int a_Zorder)
 {
-	for(auto p : m_vChilds)
+	for(auto p : _childs)
 	{
 		if (p == a_Ref)
 		{
@@ -54,19 +54,19 @@ void CNode::addChild(CNode* a_Ref, int a_Zorder)
 		}
 	}
 
-	m_nZorder = a_Zorder;
+	_zorder = a_Zorder;
 
-	m_vChilds.push_back(a_Ref);
+	_childs.push_back(a_Ref);
 
-	for (int i = 0; i < m_vChilds.size(); i++)
+	for (int i = 0; i < _childs.size(); i++)
 	{
-		for (int j = 0; j < m_vChilds.size() - (i + 1); j++)
+		for (int j = 0; j < _childs.size() - (i + 1); j++)
 		{
-			if (m_vChilds.at(j)->getZorder() > m_vChilds.at(j + 1)->getZorder())
+			if (_childs.at(j)->getZorder() > _childs.at(j + 1)->getZorder())
 			{
-				auto temp = m_vChilds.at(j + 1);
-				m_vChilds.at(j + 1) = m_vChilds.at(j);
-				m_vChilds.at(j) = temp;
+				auto temp = _childs.at(j + 1);
+				_childs.at(j + 1) = _childs.at(j);
+				_childs.at(j) = temp;
 			}
 		}
 	}
@@ -74,17 +74,17 @@ void CNode::addChild(CNode* a_Ref, int a_Zorder)
 
 char* CNode::getTag()
 {
-	return m_sTag;
+	return _tag;
 }
 int CNode::getZorder()
 {
-	return m_nZorder;
+	return _zorder;
 }
 
 
 void CNode::removeChild(CNode* a_Ref)
 {
-	for (auto p : m_vChilds)
+	for (auto p : _childs)
 	{
 		if (p == a_Ref)
 		{
@@ -98,7 +98,7 @@ void CNode::removeChild(CNode* a_Ref)
 }
 void CNode::removeChildByTag(char* a_sTag)
 {
-	for (auto p : m_vChilds)
+	for (auto p : _childs)
 	{
 		if (p->getTag() == a_sTag)
 		{

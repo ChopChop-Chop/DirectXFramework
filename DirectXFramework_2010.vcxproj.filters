@@ -61,8 +61,12 @@
       <Filter>Node</Filter>
     </ClCompile>
     <ClCompile Include="S_Intro.cpp" />
-    <ClCompile Include="Sprite.cpp" />
-    <ClCompile Include="Mesh.cpp" />
+    <ClCompile Include="Mesh.cpp">
+      <Filter>Node</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>Node</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CollisionManager.h">
@@ -105,8 +109,12 @@
       <Filter>System</Filter>
     </ClInclude>
     <ClInclude Include="S_Intro.h" />
-    <ClInclude Include="Sprite.h" />
-    <ClInclude Include="Mesh.h" />
+    <ClInclude Include="Mesh.h">
+      <Filter>Node</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>Node</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CLInclude Include="resource.h">

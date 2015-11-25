@@ -20,9 +20,9 @@ public:
 	CNode();
 	virtual ~CNode();
 protected:
-	std::vector<CNode*> m_vChilds;
+	std::vector<CNode*> _childs;
 
-	char* m_sTag;
-	int m_nZorder;
+	char* _tag;
+	int _zorder;
 };
 

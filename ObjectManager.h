@@ -18,6 +18,6 @@ public:
 	~CObjectManager();
 
 private:
-	std::vector<CNode*> m_vObjectPool;
+	std::vector<CNode*> _objectPool;
 };
 

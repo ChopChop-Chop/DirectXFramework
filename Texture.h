@@ -20,44 +20,44 @@ public:
 	CTexture();
 	virtual ~CTexture();
 private:
-	LPDIRECT3DTEXTURE9 m_pTexture;
-	char* m_sFileName;
-	RECT m_rRect;
-	D3DXIMAGE_INFO m_ImgInfo;
+	LPDIRECT3DTEXTURE9 _texture;
+	char* _fileName;
+	RECT _rect;
+	D3DXIMAGE_INFO _imgInfo;
 
 };
 __inline LPDIRECT3DTEXTURE9 CTexture::getTexture()
 {
-	return m_pTexture;
+	return _texture;
 }
 __inline char* CTexture::getFileName()
 {
-	return m_sFileName;
+	return _fileName;
 }
 __inline RECT CTexture::getRect()
 {
-	return m_rRect;
+	return _rect;
 }
 __inline D3DXIMAGE_INFO CTexture::getImgInfo()
 {
-	return m_ImgInfo;
+	return _imgInfo;
 }
 
 __inline void CTexture::setTexture(LPDIRECT3DTEXTURE9 a_pTexture)
 {
-	m_pTexture = a_pTexture;
+	_texture = a_pTexture;
 }
 __inline void CTexture::setFileName(const char* a_sFileName)
 {
-	m_sFileName = new char(sizeof(a_sFileName));
+	_fileName = new char(sizeof(a_sFileName));
 
-	strcpy(m_sFileName, a_sFileName);
+	strcpy(_fileName, a_sFileName);
 }
 __inline void CTexture::setRect(RECT a_rRect)
 {
-	m_rRect = a_rRect;
+	_rect = a_rRect;
 }
 __inline void CTexture::setImgInfo(D3DXIMAGE_INFO a_ImgInfo)
 {
-	m_ImgInfo = a_ImgInfo;
+	_imgInfo = a_ImgInfo;
 }

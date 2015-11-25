@@ -19,33 +19,33 @@ enum class RButtonState
 class CInputManager
 {
 public:
-	void setCurDownKey(WPARAM a_KeyInfo) { m_CurDownKey = a_KeyInfo; }
-	void setCurUpKey(WPARAM a_KeyInfo) { m_CurUpKey = a_KeyInfo; }
+	void setCurDownKey(WPARAM a_KeyInfo) { _curDownKey = a_KeyInfo; }
+	void setCurUpKey(WPARAM a_KeyInfo) { _curUpKey = a_KeyInfo; }
 	void setMousePosition(LPARAM a_MouseInfo) {
-		m_fMouseX = LOWORD(a_MouseInfo);
-		m_fMouseY = HIWORD(a_MouseInfo);
+		_mouseX = LOWORD(a_MouseInfo);
+		_mouseY = HIWORD(a_MouseInfo);
 	}
-	void setLButtonState(LButtonState a_State) { m_eLButtonState = a_State; }
-	void setRButtonState(RButtonState a_State) { m_eRButtonState = a_State; }
+	void setLButtonState(LButtonState a_State) { _lButtonState = a_State; }
+	void setRButtonState(RButtonState a_State) { _rButtonState = a_State; }
 	
-	WPARAM getCurDownKey() { return m_CurDownKey; }
-	WPARAM getCurUpKey() { return m_CurUpKey; }
-	float getCurMouseX() { return m_fMouseX; }
-	float getCurMouseY() { return m_fMouseY; }
-	LButtonState getLButtonState() { return m_eLButtonState; }
-	RButtonState getRButtonState() { return m_eRButtonState; }
+	WPARAM getCurDownKey() { return _curDownKey; }
+	WPARAM getCurUpKey() { return _curUpKey; }
+	float getCurMouseX() { return _mouseX; }
+	float getCurMouseY() { return _mouseY; }
+	LButtonState getLButtonState() { return _lButtonState; }
+	RButtonState getRButtonState() { return _rButtonState; }
 
 
 	CInputManager();
 	~CInputManager();
 private:
-	WPARAM m_CurDownKey;
-	WPARAM m_CurUpKey;
+	WPARAM _curDownKey;
+	WPARAM _curUpKey;
 	
-	float m_fMouseX;
-	float m_fMouseY;
+	float _mouseX;
+	float _mouseY;
 
-	LButtonState m_eLButtonState;
-	RButtonState m_eRButtonState;
+	LButtonState _lButtonState;
+	RButtonState _rButtonState;
 };
 

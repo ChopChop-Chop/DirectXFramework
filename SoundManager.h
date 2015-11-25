@@ -15,10 +15,10 @@ public:
 	~CSoundManager();
 
 public:
-	bool m_bIsSoundOn;
+	bool _isSoundOn;
 
-	FMOD_SYSTEM* m_pSoundSystem;
-	FMOD_CHANNEL* m_pChannel;
+	FMOD_SYSTEM* _soundSystem;
+	FMOD_CHANNEL* _channel;
 
 };
 

@@ -20,10 +20,10 @@ bool CTexture::createTexture(const char* a_sFileName)
 	if (temp == NULL)
 		return false;
 
-	this->m_sFileName = temp->getFileName();
-	this->m_ImgInfo = temp->getImgInfo();
-	this->m_rRect = temp->getRect();
-	this->m_pTexture = temp->getTexture();
+	this->_fileName = temp->getFileName();
+	this->_imgInfo = temp->getImgInfo();
+	this->_rect = temp->getRect();
+	this->_texture = temp->getTexture();
 
 	return true;
 	

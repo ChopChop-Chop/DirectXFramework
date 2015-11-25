@@ -4,15 +4,15 @@
 
 CDirector::CDirector()
 {
-	m_bIsActive = true;
+	_isActive = true;
 
-	m_pCollisionMgr = nullptr;
-	m_pDrawMgr = nullptr;
-	m_pInputMgr = nullptr;
-	m_pObjectMgr = nullptr;
-	m_pTextureMgr = nullptr;
-	m_pSceneMgr = nullptr;
-	m_pSoundMgr = nullptr;
+	_collisionMgr = nullptr;
+	_drawMgr = nullptr;
+	_inputMgr = nullptr;
+	_objectMgr = nullptr;
+	_textureMgr = nullptr;
+	_sceneMgr = nullptr;
+	_soundMgr = nullptr;
 }
 
 
@@ -23,31 +23,31 @@ CDirector::~CDirector()
 
 bool CDirector::Init()
 {
-	m_pDrawMgr = new CDrawManager();
-	m_pDrawMgr->Init();
-
-	m_pCollisionMgr = new CCollisionManager();
-	m_pInputMgr = new CInputManager();
-	m_pObjectMgr = new CObjectManager();
-	m_pTextureMgr = new CTextureManager();
-	m_pSceneMgr = new CSceneManager();
-	m_pSoundMgr = new CSoundManager();
-
-	m_pSceneMgr->setCurScene(new S_Intro);
-	m_pSceneMgr->getCurScene()->Init();
+	_drawMgr = new CDrawManager();
+	_drawMgr->Init();
+	
+	_collisionMgr = new CCollisionManager();
+	_inputMgr = new CInputManager();
+	_objectMgr = new CObjectManager();
+	_textureMgr = new CTextureManager();
+	_sceneMgr = new CSceneManager();
+	_soundMgr = new CSoundManager();
+	
+	_sceneMgr->setCurScene(new S_Intro);
+	_sceneMgr->getCurScene()->Init();
 
 	return true;
 }
 void CDirector::Update()
 {
-	m_pSceneMgr->sceneUpdate();
-	m_pSceneMgr->getCurScene()->Update();
+	_sceneMgr->sceneUpdate();
+	_sceneMgr->getCurScene()->Update();
 	// Scene Update();
 }
 void CDirector::Render()
 {
 	CDrawMgr->PreRender();
-	m_pSceneMgr->getCurScene()->Render();
+	_sceneMgr->getCurScene()->Render();
 	CDrawMgr->PostRender();
 }
 void CDirector::Run()
@@ -61,7 +61,7 @@ void CDirector::Run()
 			TranslateMessage(&msg);
 			DispatchMessage(&msg);
 		}
-		else if (CDIRECTOR->m_bIsActive)
+		else if (CDIRECTOR->_isActive)
 		{
 			Update();
 			Render();
@@ -70,13 +70,13 @@ void CDirector::Run()
 }
 void CDirector::Release()
 {
-	SAFE_DELETE(m_pSoundMgr);
-	SAFE_DELETE(m_pSceneMgr);
-	SAFE_DELETE(m_pTextureMgr);
-	SAFE_DELETE(m_pObjectMgr);
-	SAFE_DELETE(m_pInputMgr);
-	SAFE_DELETE(m_pDrawMgr);
-	SAFE_DELETE(m_pCollisionMgr);
+	SAFE_DELETE(_soundMgr);
+	SAFE_DELETE(_sceneMgr);
+	SAFE_DELETE(_textureMgr);
+	SAFE_DELETE(_objectMgr);
+	SAFE_DELETE(_inputMgr);
+	SAFE_DELETE(_drawMgr);
+	SAFE_DELETE(_collisionMgr);
 }
 LRESULT WINAPI MsgProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {

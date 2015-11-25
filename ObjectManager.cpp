@@ -14,7 +14,7 @@ CObjectManager::~CObjectManager()
 
 void CObjectManager::addObject(CNode* a_Ref)
 {
-	for (auto p : m_vObjectPool)
+	for (auto p : _objectPool)
 	{
 		if (p == a_Ref)
 		{
@@ -24,11 +24,11 @@ void CObjectManager::addObject(CNode* a_Ref)
 		}
 	}
 
-	m_vObjectPool.push_back(a_Ref);
+	_objectPool.push_back(a_Ref);
 }
 void CObjectManager::removeObjectByTag(char* a_sTag)
 {
-	for (auto p : m_vObjectPool)
+	for (auto p : _objectPool)
 	{
 		if (p->getTag() == a_sTag)
 		{
@@ -42,7 +42,7 @@ void CObjectManager::removeObjectByTag(char* a_sTag)
 }
 void CObjectManager::removeObject(CNode* a_Ref)
 {
-	for (auto p : m_vObjectPool)
+	for (auto p : _objectPool)
 	{
 		if (p == a_Ref)
 		{
@@ -57,7 +57,7 @@ void CObjectManager::removeObject(CNode* a_Ref)
 }
 CNode* CObjectManager::getObjectByTag(char* a_sTag)
 {
-	for (auto p : m_vObjectPool)
+	for (auto p : _objectPool)
 	{
 		if (p->getTag() == a_sTag)
 		{
@@ -68,7 +68,7 @@ CNode* CObjectManager::getObjectByTag(char* a_sTag)
 }
 CNode* CObjectManager::getObjectByIndex(int a_nIndex)
 {
-	if (m_vObjectPool.at(a_nIndex) == NULL)
+	if (_objectPool.at(a_nIndex) == NULL)
 	{
 		MessageBox(CDIRECTOR->getDrawManager()->getHWND(), "can not find Object", "can not find object", MB_OK);
 		std::cout << "can not found object by index" << a_nIndex << std::endl;
@@ -76,7 +76,7 @@ CNode* CObjectManager::getObjectByIndex(int a_nIndex)
 	}
 	else
 	{
-		return m_vObjectPool.at(a_nIndex);
+		return _objectPool.at(a_nIndex);
 	}
 	
 
@@ -85,12 +85,12 @@ CNode* CObjectManager::getObjectByIndex(int a_nIndex)
 
 void CObjectManager::clearPool()
 {
-	for (int i = m_vObjectPool.size(); i > 0; i--)
+	for (int i = _objectPool.size(); i > 0; i--)
 	{
-		m_vObjectPool.at(i)->Release();
-		delete m_vObjectPool.at(i);
+		_objectPool.at(i)->Release();
+		delete _objectPool.at(i);
 	}
-	m_vObjectPool.clear();
+	_objectPool.clear();
 
 	
 }

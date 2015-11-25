@@ -12,6 +12,6 @@ public:
 	~CTextureManager();
 
 private:
-	std::vector<CTexture*> m_vTextureInfo;
+	std::vector<CTexture*> _textureInfo;
 };
 

@@ -18,13 +18,13 @@ public:
 	void Run();	// Main Loop
 	void Release();	// Manager Release
 
-	CCollisionManager* getCollisionManager() { return m_pCollisionMgr; }
-	CDrawManager* getDrawManager() { return m_pDrawMgr; }
-	CInputManager* getInputManager() { return m_pInputMgr; }
-	CObjectManager* getObjectManager() { return m_pObjectMgr; }
-	CTextureManager* getTextureManager() { return m_pTextureMgr; }
-	CSceneManager* getSceneManager() { return m_pSceneMgr; }
-	CSoundManager* getSoundManager() { return m_pSoundMgr; }
+	CCollisionManager* getCollisionManager() { return _collisionMgr; }
+	CDrawManager* getDrawManager() { return _drawMgr; }
+	CInputManager* getInputManager() { return _inputMgr; }
+	CObjectManager* getObjectManager() { return _objectMgr; }
+	CTextureManager* getTextureManager() { return _textureMgr; }
+	CSceneManager* getSceneManager() { return _sceneMgr; }
+	CSoundManager* getSoundManager() { return _soundMgr; }
 	
 	static CDirector* getInstance()
 	{
@@ -40,15 +40,15 @@ public:
 	~CDirector();
 private:
 
-	CCollisionManager* m_pCollisionMgr;
-	CDrawManager* m_pDrawMgr;
-	CInputManager* m_pInputMgr;
-	CObjectManager* m_pObjectMgr;
-	CTextureManager* m_pTextureMgr;
-	CSceneManager* m_pSceneMgr;
-	CSoundManager* m_pSoundMgr;
+	CCollisionManager* _collisionMgr;
+	CDrawManager* _drawMgr;
+	CInputManager* _inputMgr;
+	CObjectManager* _objectMgr;
+	CTextureManager* _textureMgr;
+	CSceneManager* _sceneMgr;
+	CSoundManager* _soundMgr;
 
-	bool m_bIsActive;
+	bool _isActive;
 
 	CDirector();
 

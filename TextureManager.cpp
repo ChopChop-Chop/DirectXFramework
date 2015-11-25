@@ -13,7 +13,7 @@ CTextureManager::~CTextureManager()
 
 CTexture* CTextureManager::createTexture(const char* a_sFileName)
 {
-	for (auto p : m_vTextureInfo)
+	for (auto p : _textureInfo)
 	{
 		if (p->getFileName() == a_sFileName)
 		{

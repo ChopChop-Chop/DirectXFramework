@@ -5,10 +5,10 @@
 class CSceneManager
 {
 private:
-	CScene* m_pNextScene;
-	CScene* m_pCurScene;
+	CScene* _nextScene;
+	CScene* _curScene;
 
-	bool m_bIsExistNextScene;
+	bool _isExistNextScene;
 public:
 	void setNextScene(CScene* a_pNextScene);
 	void setCurScene(CScene* a_pCurScene);

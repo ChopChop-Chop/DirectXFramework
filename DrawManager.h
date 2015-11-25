@@ -15,11 +15,11 @@ public:
 	void PostRender();
 	void Release();
 
-	LPDIRECT3D9 getD3D() { return m_pD3D; }
-	LPDIRECT3DDEVICE9 getDevice() { return m_pDevice; }
-	LPD3DXSPRITE getSprite() { return m_pSprite; }
-	LPD3DXMESH getMesh() { return m_pMesh; }
-	HWND getHWND() { return m_HWND; }
+	LPDIRECT3D9 getD3D() { return _D3D; }
+	LPDIRECT3DDEVICE9 getDevice() { return _device; }
+	LPD3DXSPRITE getSprite() { return _sprite; }
+	LPD3DXMESH getMesh() { return _mesh; }
+	HWND getHWND() { return _hWND; }
 
 	/*
 	void setCamera(CCamera* a_pCamera);
@@ -29,12 +29,12 @@ public:
 	CDrawManager();
 	~CDrawManager();
 private:
-	LPDIRECT3D9         m_pD3D;
-	LPDIRECT3DDEVICE9    m_pDevice;
-	LPD3DXSPRITE		   m_pSprite;
-	LPD3DXMESH          m_pMesh;
-	HWND				   m_HWND;
+	LPDIRECT3D9         _D3D;
+	LPDIRECT3DDEVICE9    _device;
+	LPD3DXSPRITE		   _sprite;
+	LPD3DXMESH          _mesh;
+	HWND				   _hWND;
 
-	RECT				   m_rtScreen;
+	RECT				   _rtScreen;
 
 };
