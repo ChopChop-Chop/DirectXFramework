@@ -67,6 +67,7 @@
     <ClCompile Include="Sprite.cpp">
       <Filter>Node</Filter>
     </ClCompile>
+    <ClCompile Include="Camera.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CollisionManager.h">
@@ -115,6 +116,7 @@
     <ClInclude Include="Sprite.h">
       <Filter>Node</Filter>
     </ClInclude>
+    <ClInclude Include="Camera.h" />
   </ItemGroup>
   <ItemGroup>
     <CLInclude Include="resource.h">

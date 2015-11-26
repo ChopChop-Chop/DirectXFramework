@@ -4,7 +4,6 @@
 
 CNode::CNode()
 {
-	_tag = new char(256);
 	
 }
 
@@ -38,7 +37,7 @@ void CNode::setZorder(int Zorder)
 
 void CNode::setTag(char* a_sTag)
 {
-	_tag = a_sTag;
+	strcpy(_tag, a_sTag);
 
 }
 
@@ -58,9 +57,9 @@ void CNode::addChild(CNode* a_Ref, int a_Zorder)
 
 	_childs.push_back(a_Ref);
 
-	for (int i = 0; i < _childs.size(); i++)
+	for (UINT i = 0; i < _childs.size(); i++)
 	{
-		for (int j = 0; j < _childs.size() - (i + 1); j++)
+		for (UINT j = 0; j < _childs.size() - (i + 1); j++)
 		{
 			if (_childs.at(j)->getZorder() > _childs.at(j + 1)->getZorder())
 			{

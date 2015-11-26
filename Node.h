@@ -22,7 +22,7 @@ public:
 protected:
 	std::vector<CNode*> _childs;
 
-	char* _tag;
+	char _tag[256];
 	int _zorder;
 };
 

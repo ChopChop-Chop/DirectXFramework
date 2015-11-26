@@ -25,6 +25,9 @@ bool CDrawManager::Init()
 	ShowWindow(_hWND, 5);
 	UpdateWindow(_hWND);
 
+	m_pCurCamera = new CCamera();
+	m_pCurCamera->Init();
+
 	return true;
 }
 bool CDrawManager::InitWin()
@@ -87,6 +90,15 @@ bool CDrawManager::InitD3D()
 
 	return true;
 }
+void CDrawManager::SetMetrices()
+{
+	m_pCurCamera->Update();
+}
+
+void CDrawManager::setCamera(CCamera* a_pCamera)
+{
+	m_pCurCamera = a_pCamera;
+}
 void CDrawManager::PreRender()
 {
 	_device->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER,
@@ -107,9 +119,8 @@ void CDrawManager::Draw2D(LPDIRECT3DTEXTURE9 a_lpTexture, RECT a_rtSrc, D3DXVECT
 	
 	_sprite->End();
 }
-void CDrawManager::Draw3D()
+void CDrawManager::Draw3D(LPDIRECT3DTEXTURE9 a_Tex, D3DXMATERIAL a_Mat)
 {
-	
 }
 void CDrawManager::PostRender()
 {
@@ -118,8 +129,8 @@ void CDrawManager::PostRender()
 }
 void CDrawManager::Release()
 {
-	SAFE_RELEASE(_mesh)
-	SAFE_RELEASE(_sprite);
-	SAFE_RELEASE(_device);
-	SAFE_RELEASE(_D3D);
+	//SAFE_RELEASE(_mesh);
+	//SAFE_RELEASE(_sprite);
+	//SAFE_RELEASE(_device);
+	//SAFE_RELEASE(_D3D);
 }

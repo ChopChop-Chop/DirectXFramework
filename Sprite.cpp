@@ -172,7 +172,7 @@ D3DXVECTOR2 CSprite::getScale()
 {
 	return _scale;
 }
-D3DXMATRIXA16 CSprite::getMat()
+D3DXMATRIX CSprite::getMat()
 {
 	return _mat;
 }

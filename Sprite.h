@@ -10,7 +10,7 @@ private:
 	D3DXVECTOR2 _pos; // 위치
 	D3DXVECTOR2 _acp; // 앵커포인트
 	D3DXVECTOR2 _scale;	// 크기
-	D3DXMATRIXA16 _mat; // 매트릭스
+	D3DXMATRIX _mat; // 매트릭스
 	D3DXCOLOR _col;
 	
 	float _degree;
@@ -47,7 +47,7 @@ public:
 	float getScaleX();
 	float getScaleY();
 	D3DXVECTOR2 getScale();
-	D3DXMATRIXA16 getMat();
+	D3DXMATRIX getMat();
 	float getDegree();
 	D3DXCOLOR getCol();
 
