@@ -42,6 +42,7 @@ bool CMesh::Init(const char* a_sFileName)
 
 	for (DWORD i = 0; i < _numMaterials; i++)
 	{
+		_textures[i] = new CTexture();
 		// Copy the material
 		_materials[i] = d3dxMaterials[i].MatD3D;
 
