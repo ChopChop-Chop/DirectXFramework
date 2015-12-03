@@ -36,9 +36,6 @@
     <ClCompile Include="DrawManager.cpp">
       <Filter>System</Filter>
     </ClCompile>
-    <ClCompile Include="InputManager.cpp">
-      <Filter>System</Filter>
-    </ClCompile>
     <ClCompile Include="ObjectManager.cpp">
       <Filter>System</Filter>
     </ClCompile>
@@ -80,9 +77,6 @@
       <Filter>System</Filter>
     </ClInclude>
     <ClInclude Include="Header.h">
-      <Filter>System</Filter>
-    </ClInclude>
-    <ClInclude Include="InputManager.h">
       <Filter>System</Filter>
     </ClInclude>
     <ClInclude Include="ObjectManager.h">

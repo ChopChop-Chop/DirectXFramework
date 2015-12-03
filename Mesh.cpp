@@ -6,9 +6,12 @@
 CMesh::CMesh()
 {
 
+	_mtrlBuffer = NULL;
+	_d3dxMaterials = new D3DXMATERIAL();
+
 	_pos = D3DXVECTOR3(0,0,0); // 위치
 	_acp = D3DXVECTOR3(0,0,0); // 앵커포인트
-	_scale = D3DXVECTOR3(0,0,0);	// 크기
+	_scale = D3DXVECTOR3(1,1,1);	// 크기
 	D3DXMatrixIdentity(&_mat); // 매트릭스
 	_col = D3DXCOLOR(1,1,1,1);
 
@@ -26,17 +29,15 @@ CMesh::~CMesh()
 
 bool CMesh::Init(const char* a_sFileName)
 {
-	LPD3DXBUFFER pD3DXMtrlBuffer;		// 메터리얼 버퍼
-
 										// Load the mesh from the specified file
 	D3DXLoadMeshFromX(a_sFileName, D3DXMESH_SYSTEMMEM,
 		CDrawMgr->getDevice(), NULL,
-		&pD3DXMtrlBuffer, NULL, &_numMaterials,
+		&_mtrlBuffer, NULL, &_numMaterials,
 		CDrawMgr->getMesh());
 
 	// We need to extract the material properties and texture names from the 
 	// pD3DXMtrlBuffer
-	D3DXMATERIAL* d3dxMaterials = (D3DXMATERIAL*)pD3DXMtrlBuffer->GetBufferPointer();
+	_d3dxMaterials = (D3DXMATERIAL*)_mtrlBuffer->GetBufferPointer();
 	_materials = new D3DMATERIAL9[_numMaterials];
 	_textures = new CTexture*[_numMaterials];
 
@@ -44,21 +45,21 @@ bool CMesh::Init(const char* a_sFileName)
 	{
 		_textures[i] = new CTexture();
 		// Copy the material
-		_materials[i] = d3dxMaterials[i].MatD3D;
+		_materials[i] = _d3dxMaterials[i].MatD3D;
 
 		// Set the ambient color for the material (D3DX does not do this)
 		_materials[i].Ambient = _materials[i].Diffuse;
 
-		if (d3dxMaterials[i].pTextureFilename != NULL &&
-			lstrlenA(d3dxMaterials[i].pTextureFilename) > 0)
+		if (_d3dxMaterials[i].pTextureFilename != NULL &&
+			lstrlenA(_d3dxMaterials[i].pTextureFilename) > 0)
 		{
 			// Create the texture
-			_textures[i]->createTexture(d3dxMaterials[i].pTextureFilename);
+			_textures[i]->createTexture(_d3dxMaterials[i].pTextureFilename);
 		}
 	}
 
 	// Done with the material buffer
-	pD3DXMtrlBuffer->Release();
+	_mtrlBuffer->Release();
 
 	return true;
 }
@@ -71,6 +72,8 @@ void CMesh::UpdateMatrix()
 void CMesh::Render()
 {
 	UpdateMatrix();
+
+	CDrawMgr->getDevice()->SetTransform(D3DTS_WORLD, &_mat);
 
 	// Meshes are divided into subsets, one for each material. Render them in
 	// a loop

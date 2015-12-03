@@ -3,7 +3,6 @@
 #include "Define.h"
 #include "CollisionManager.h"
 #include "DrawManager.h"
-#include "InputManager.h"
 #include "ObjectManager.h"
 #include "TextureManager.h"
 #include "SceneManager.h"
@@ -20,11 +19,16 @@ public:
 
 	CCollisionManager* getCollisionManager() { return _collisionMgr; }
 	CDrawManager* getDrawManager() { return _drawMgr; }
-	CInputManager* getInputManager() { return _inputMgr; }
 	CObjectManager* getObjectManager() { return _objectMgr; }
 	CTextureManager* getTextureManager() { return _textureMgr; }
 	CSceneManager* getSceneManager() { return _sceneMgr; }
 	CSoundManager* getSoundManager() { return _soundMgr; }
+
+	double getMouseX() { return _mouseX; }
+	double getMouseY() { return _mouseY; }
+	void setMouseX(double a_mouseX) { _mouseX = a_mouseX; }
+	void setMouseY(double a_mouseY) { _mouseY = a_mouseY; }
+	void setMousePos(double a_mouseX, double a_mouseY) { _mouseX = a_mouseX; _mouseY = a_mouseY; }
 	
 	static CDirector* getInstance()
 	{
@@ -42,11 +46,13 @@ private:
 
 	CCollisionManager* _collisionMgr;
 	CDrawManager* _drawMgr;
-	CInputManager* _inputMgr;
 	CObjectManager* _objectMgr;
 	CTextureManager* _textureMgr;
 	CSceneManager* _sceneMgr;
 	CSoundManager* _soundMgr;
+
+	double _mouseX;
+	double _mouseY;
 
 	bool _isActive;
 

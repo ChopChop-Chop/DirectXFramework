@@ -4,7 +4,7 @@
 
 CNode::CNode()
 {
-	
+	_childs.clear();
 }
 
 
@@ -25,7 +25,7 @@ void CNode::Render()
 }
 void CNode::Release()
 {
-	for (int i = _childs.size(); i > 0; i--)
+	for (int i = _childs.size() - 1; i >= 0; i--)
 	{
 		_childs.at(i)->Release();
 	}

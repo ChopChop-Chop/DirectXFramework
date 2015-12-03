@@ -10,6 +10,9 @@ public:
 	bool Init();
 	void Update();
 	
+	void KeyDown(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
+	void KeyUp(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
+	
 	S_Intro();
 	~S_Intro();
 private:

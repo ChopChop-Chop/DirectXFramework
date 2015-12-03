@@ -30,7 +30,7 @@ void CCamera::Update()
 		D3DXMatrixLookAtLH(&_view, &_eye, &_lookAt, &_up);
 		CDrawMgr->getDevice()->SetTransform(D3DTS_VIEW, &_view);				// 요건 카메라
 
-		D3DXMatrixPerspectiveFovLH(&_proj, D3DX_PI / 4, 1.0f, 1.0f, 1000.0f);
+		D3DXMatrixPerspectiveFovLH(&_proj, D3DX_PI / 4, 16 / 9, 1.0f, 1000.0f);
 		CDrawMgr->getDevice()->SetTransform(D3DTS_PROJECTION, &_proj);				// 퍼스펙티브
 	}
 }

@@ -5,6 +5,14 @@
 
 CTexture::CTexture()
 {
+	_texture = NULL;
+	_fileName= NULL;
+	_rect.bottom = 0;
+	_rect.left = 0; 
+	_rect.right = 0; 
+	_rect.top = 0;
+
+	_imgInfo = { 0, };
 }
 
 
